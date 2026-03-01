@@ -3,56 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hong's Coffee House</title>
+    <title>HONG'S CAFE & BISTRO</title>
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <header>
         <h1>☕ HONG'S CAFE</h1>
-        <p>รสชาติที่คุณหลงรัก ในบรรยากาศที่ใช่</p>
+        <div class="cart-summary" onclick="toggleCart()">
+            🛒 ตะกร้าของฉัน (<span id="cart-count">0</span>)
+        </div>
     </header>
 
+    <nav class="tab-bar">
+        <button class="tab-link active" onclick="showCategory('coffee')">☕ กาแฟ</button>
+        <button class="tab-link" onclick="showCategory('drink')">🥤 เครื่องดื่ม</button>
+        <button class="tab-link" onclick="showCategory('food')">🥪 ของกิน</button>
+    </nav>
+
     <div class="container">
-        <section class="menu-section">
-            <h2>เมนูแนะนำวันนี้</h2>
-            
-            <div class="menu-item">
-                <div class="details">
-                    <h3>อเมริกาโน่เย็น (Iced Americano)</h3>
-                    <p>เมล็ดกาแฟคั่วกลาง ให้รสสัมผัสที่สดชื่น</p>
-                </div>
-                <span class="price">65.-</span>
-            </div>
+        <div id="coffee" class="menu-grid active">
+            <div class="product-card" onclick="addToCart('อเมริกาโน่ร้อน', 55)"><h3>อเมริกาโน่ร้อน</h3><p>55.-</p></div>
+            <div class="product-card" onclick="addToCart('อเมริกาโน่เย็น', 65)"><h3>อเมริกาโน่เย็น</h3><p>65.-</p></div>
+            <div class="product-card" onclick="addToCart('ลาเต้ร้อน', 65)"><h3>ลาเต้ร้อน</h3><p>65.-</p></div>
+            <div class="product-card" onclick="addToCart('ลาเต้เย็น', 75)"><h3>ลาเต้เย็น</h3><p>75.-</p></div>
+            <div class="product-card" onclick="addToCart('คาปูชิโน่เย็น', 80)"><h3>คาปูชิโน่เย็น</h3><p>80.-</p></div>
+            <div class="product-card" onclick="addToCart('มอคค่าเย็น', 80)"><h3>มอคค่าเย็น</h3><p>80.-</p></div>
+        </div>
 
-            <div class="menu-item">
-                <div class="details">
-                    <h3>ลาเต้อาร์ต (Latte Art)</h3>
-                    <p>นุ่มละมุนด้วยฟองนมละเอียดและลายสวยงาม</p>
-                </div>
-                <span class="price">75.-</span>
-            </div>
+        <div id="drink" class="menu-grid">
+            <div class="product-card" onclick="addToCart('ชาไทยเย็น', 60)"><h3>ชาไทยเย็น</h3><p>60.-</p></div>
+            <div class="product-card" onclick="addToCart('ชาเขียวนมเย็น', 60)"><h3>ชาเขียวนมเย็น</h3><p>60.-</p></div>
+            <div class="product-card" onclick="addToCart('โกโก้เย็น', 65)"><h3>โกโก้เย็น</h3><p>65.-</p></div>
+            <div class="product-card" onclick="addToCart('น้ำมะนาวโซดา', 50)"><h3>น้ำมะนาวโซดา</h3><p>50.-</p></div>
+            <div class="product-card" onclick="addToCart('สตอเบอรี่โซดา', 55)"><h3>สตอเบอรี่โซดา</h3><p>55.-</p></div>
+        </div>
 
-            <div class="menu-item">
-                <div class="details">
-                    <h3>ครัวซองต์เนยสด (Butter Croissant)</h3>
-                    <p>อบสดใหม่ทุกเช้า หอมกรุ่นจากเตา</p>
-                </div>
-                <span class="price">89.-</span>
-            </div>
-
-            <button class="order-btn">สั่งอาหารเดลิเวอรี่</button>
-        </section>
+        <div id="food" class="menu-grid">
+            <div class="product-card" onclick="addToCart('แซนวิชแฮมชีส', 75)"><h3>แฮมชีสแซนวิช</h3><p>75.-</p></div>
+            <div class="product-card" onclick="addToCart('แซนวิชทูน่า', 75)"><h3>ทูน่าแซนวิช</h3><p>75.-</p></div>
+            <div class="product-card" onclick="addToCart('ครัวซองต์เนยสด', 85)"><h3>ครัวซองต์เนยสด</h3><p>85.-</p></div>
+            <div class="product-card" onclick="addToCart('เฟรนช์ฟรายส์', 60)"><h3>เฟรนช์ฟรายส์</h3><p>60.-</p></div>
+            <div class="product-card" onclick="addToCart('สลัดผักออแกนิค', 95)"><h3>สลัดผัก</h3><p>95.-</p></div>
+        </div>
     </div>
 
-    <footer>
-        <p>เปิดบริการทุกวัน: 08.00 - 18.00 น.</p>
-        <p>พิกัด: ถนนสีลม กรุงเทพฯ</p>
-    </footer>
-<div style="text-align: center; margin-top: 20px;">
-    <a href="food.html" style="color: #a0522d; font-weight: bold; text-decoration: none; font-size: 1.1rem;">
-        👉 ดูเมนูอาหารทานเล่นที่นี่
-    </a>
-</div>
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="toggleCart()">&times;</span>
+            <h2>ตะกร้าสินค้าของคุณ</h2>
+            <div id="cart-items"></div>
+            <hr>
+            <div class="total-price">รวมทั้งสิ้น: <span id="total-price">0</span> บาท</div>
+            <button class="checkout-btn" onclick="payNow()">💸 ชำระเงินทันที</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let total = 0;
+
+        function showCategory(cat) {
+            document.querySelectorAll('.menu-grid').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-link').forEach(el => el.classList.remove('active'));
+            document.getElementById(cat).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function addToCart(name, price) {
+            cart.push({name, price});
+            total += price;
+            updateCart();
+            alert("เพิ่ม " + name + " เรียบร้อย!");
+        }
+
+        function updateCart() {
+            document.getElementById('cart-count').innerText = cart.length;
+            document.getElementById('total-price').innerText = total;
+            const list = document.getElementById('cart-items');
+            list.innerHTML = cart.map(item => `<p>${item.name} - ${item.price}.-</p>`).join('');
+        }
+
+        function toggleCart() {
+            document.getElementById('cart-modal').classList.toggle('show');
+        }
+
+        function payNow() {
+            if(total === 0) return alert("ตะกร้ายังว่างอยู่ครับคุณหงส์");
+            alert("ไปหน้าชำระเงิน ยอดรวม: " + total + " บาท");
+        }
+    </script>
 </body>
 </html>
